@@ -45,6 +45,18 @@ router.route('/municipios')
             })
     })
 
+router.route('/estados')
+    .get((req, res, next) => {
+
+        axiosLocalidades.get(`estados`)
+            .then(response => {
+                console.log('Chegou na resposta ', response.data.length)
+                res.json(response.data)
+            }).catch(error => {
+                res.status(500).json(error)
+            })
+    })
+
 router.route('/forecast')
     .get((req, res, next) => {
         let localidade = req.query.localidade
